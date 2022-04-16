@@ -24,8 +24,12 @@ module.exports = {
     'prettier/prettier': 'error', // make error when unfollow prettier format
     'import/extensions': 'off', // index instead of index.js
     'import/no-unresolved': 'error', // turn on errors for missing imports
+    'import/prefer-default-export': 'off',
     'no-console': 'off', // allow using console
     camelcase: 'error',
+    'no-shadow': 'off',
+    'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    '@typescript-eslint/no-shadow': ['error'],
     'import/order': [
       // setting rank of import
       'error',
@@ -35,6 +39,13 @@ module.exports = {
           ['builtin', 'external'],
           ['internal', 'parent', 'sibling', 'index'],
         ],
+      },
+    ],
+    '@typescript-eslint/no-this-alias': [
+      'error',
+      {
+        allowDestructuring: true, // Allow `const { props, state } = this`; true by default
+        allowedNames: ['self'], // Allow `const self = this`; `[]` by default
       },
     ],
   },
