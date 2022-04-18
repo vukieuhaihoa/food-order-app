@@ -2,12 +2,13 @@ import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { ICreatVendorRequest } from '@src/dto';
 import { Vendor } from '@src/models/Vendor.model';
-import { ResponseFormat } from '@src/Response.util';
+import { ResponseFormat } from '@src/utility/Response.util';
+import { IResponseFormat } from '@src/dto/Response.dto';
 
 export const CreateVendor = async (
   req: Request,
   res: Response,
-  _next: NextFunction
+  next: NextFunction
 ) => {
   try {
     const {
@@ -35,14 +36,14 @@ export const CreateVendor = async (
       rating: 0,
     });
 
-    return res
-      .status(StatusCodes.OK)
-      .json(ResponseFormat(StatusCodes.OK, 'create vendor success', vendor));
+    const resData: IResponseFormat = {
+      data: vendor,
+      message: 'Create vendor success',
+      statusCode: StatusCodes.OK,
+    };
+    ResponseFormat(res, resData);
   } catch (error) {
-    console.log({ error });
-    return res
-      .status(StatusCodes.INTERNAL_SERVER_ERROR)
-      .json(ResponseFormat(StatusCodes.INTERNAL_SERVER_ERROR, '', null));
+    next(error);
   }
 };
 

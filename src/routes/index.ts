@@ -1,6 +1,6 @@
 import { Express } from 'express';
-import { AdminRoute } from './AdminRoute';
-import { VendorRoute } from './VendorRoute';
+import { AdminRoute } from './Admin.route';
+import { VendorRoute } from './Vendor.route';
 
 const settingRoutes = (app: Express) => {
   app.use('/admin', AdminRoute);

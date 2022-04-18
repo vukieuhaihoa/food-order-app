@@ -28,7 +28,8 @@ module.exports = {
     'no-console': 'off', // allow using console
     camelcase: 'error',
     'no-shadow': 'off',
-    'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     '@typescript-eslint/no-shadow': ['error'],
     'import/order': [
       // setting rank of import
