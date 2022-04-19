@@ -32,6 +32,7 @@ module.exports = {
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     '@typescript-eslint/no-shadow': ['error'],
+    'no-underscore-dangle': ['error', { allow: ['__v'] }],
     'import/order': [
       // setting rank of import
       'error',

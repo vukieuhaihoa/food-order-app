@@ -48,11 +48,21 @@ export const CreateVendor = async (
 };
 
 export const GetVendors = async (
-  _req: Request,
-  _res: Response,
-  _next: NextFunction
+  req: Request,
+  res: Response,
+  next: NextFunction
 ) => {
-  return true;
+  try {
+    const listVendors = await Vendor.find();
+    const resData: IResponseFormat = {
+      data: listVendors,
+      message: 'Create vendor success',
+      statusCode: StatusCodes.OK,
+    };
+    ResponseFormat(res, resData);
+  } catch (error) {
+    next(error);
+  }
 };
 
 export const GetVendorById = async (

@@ -74,6 +74,15 @@ const vendorSchema: Schema = new Schema(
     },
   },
   {
+    toJSON: {
+      transform: (doc, ret) => {
+        const tempRet = ret;
+        delete tempRet.password;
+        delete tempRet.salt;
+        delete tempRet.__v;
+        return ret;
+      },
+    },
     timestamps: true, // auto create 2 filed : created_at, updated_at
   }
 );
