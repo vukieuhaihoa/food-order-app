@@ -3,6 +3,7 @@ module.exports = {
     // provide environment for eslint can work
     browser: true,
     es2021: true,
+    jest: true,
   },
   extends: [
     // setting some extend for make code pro :V
